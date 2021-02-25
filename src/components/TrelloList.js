@@ -1,14 +1,14 @@
 import TrelloCard from './TrelloCard';
 import TrelloActionBtn from './TrelloActionBtn';
 
-const TrelloList = ({ title, cards }) => {
+const TrelloList = ({ title, cards, listID }) => {
 	return (
 		<div style={style.container}>
 			<h4>{title}</h4>
 			{cards.map((card) => (
 				<TrelloCard key={card.id}>{card.text}</TrelloCard>
 			))}
-			<TrelloActionBtn />
+			<TrelloActionBtn listID={listID} />
 		</div>
 	);
 };

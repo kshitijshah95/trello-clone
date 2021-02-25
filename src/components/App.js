@@ -5,10 +5,14 @@ import TrelloActionBtn from './TrelloActionBtn';
 const App = ({ lists }) => {
 	return (
 		<div>
-			Hello World!
 			<div style={styles.listContainer}>
 				{lists.map((list) => (
-					<TrelloList title={list.title} cards={list.cards} key={list.id} />
+					<TrelloList
+						listID={list.id}
+						key={list.id}
+						title={list.title}
+						cards={list.cards}
+					/>
 				))}
 				<TrelloActionBtn list />
 			</div>
