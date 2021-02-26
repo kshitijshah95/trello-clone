@@ -29,9 +29,9 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/kshitijshah95/trello-clone">
+  <!-- <a href="https://github.com/kshitijshah95/trello-clone">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+  </a> -->
 
   <h3 align="center">Trello Clone</h3>
 
