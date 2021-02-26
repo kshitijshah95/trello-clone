@@ -6,34 +6,34 @@ let cardID = 4;
 const initialState = [
 	{
 		title: 'Last Episode',
-		id: 0,
+		id: `list-${0}`,
 		cards: [
 			{
-				id: 0,
+				id: `card-${0}`,
 				text:
 					'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, culpa?',
 			},
 			{
-				id: 1,
+				id: `card-${1}`,
 				text: 'Lorem ipsum dolor sit amet.',
 			},
 		],
 	},
 	{
 		title: 'Second Episode',
-		id: 1,
+		id: `list-${1}`,
 		cards: [
 			{
-				id: 0,
+				id: `card-${2}`,
 				text:
 					'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, culpa?',
 			},
 			{
-				id: 1,
+				id: `card-${3}`,
 				text: 'Lorem ipsum dolor sit amet.',
 			},
 			{
-				id: 2,
+				id: `card-${4}`,
 				text:
 					'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, culpa?',
 			},
@@ -43,19 +43,20 @@ const initialState = [
 
 const listReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case CONSTANTS.ADD_LIST:
+		case CONSTANTS.ADD_LIST: {
 			const newList = {
 				title: action.payload,
 				cards: [],
-				id: listID,
+				id: `list-${listID}`,
 			};
 			listID += 1;
 			return [...state, newList];
+		}
 
-		case CONSTANTS.ADD_CARD:
+		case CONSTANTS.ADD_CARD: {
 			const newCard = {
 				text: action.payload.text,
-				id: cardID,
+				id: `card-${cardID}`,
 			};
 			cardID += 1;
 			const newState = state.map((list) => {
@@ -64,6 +65,42 @@ const listReducer = (state = initialState, action) => {
 				else return list;
 			});
 			return newState;
+		}
+
+		case CONSTANTS.DRAG_HAPPENED: {
+			const {
+				droppableIdStart,
+				droppableIdEnd,
+				droppableIndexStart,
+				droppableIndexEnd,
+				draggableId,
+				type,
+			} = action.payload;
+			const newState = [...state];
+
+			// Drag List
+			if (type === 'list') {
+				const list = newState.splice(droppableIndexStart, 1);
+				newState.splice(droppableIndexEnd, 0, ...list);
+				return newState;
+			}
+
+			// In the same list
+			if (droppableIdStart === droppableIdEnd) {
+				const list = state.find((list) => droppableIdStart === list.id);
+				const card = list.cards.splice(droppableIndexStart, 1);
+				list.cards.splice(droppableIndexEnd, 0, ...card);
+			}
+			//ANOTHER LIST
+			if (droppableIdStart !== droppableIdEnd) {
+				const listStart = state.find((list) => droppableIdStart === list.id);
+				const card = listStart.cards.splice(droppableIndexStart, 1);
+				const listEnd = state.find((list) => droppableIdEnd === list.id);
+				listEnd.cards.splice(droppableIndexEnd, 0, ...card);
+			}
+
+			return newState;
+		}
 
 		default:
 			return state;
