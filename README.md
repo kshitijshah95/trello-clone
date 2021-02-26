@@ -38,8 +38,8 @@
   <p align="center">
     Trello Clone, as the name suggests is a clone of Trello web app. The App consists of drag and Drop functionalities and adding new lists and cards. The app also allows reordering of lists and cards.
     <br />
-    <a href="https://github.com/kshitijshah95/trello-clone"><strong>Explore the docs »</strong></a>
-    <br />
+    <!-- <a href="https://github.com/kshitijshah95/trello-clone"><strong>Explore the docs »</strong></a> -->
+    <!-- <br /> -->
     <br />
     <a href="https://trello-clone-kshitijshah95.netlify.app">View Demo</a>
     ·
@@ -67,7 +67,7 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
+    <!-- <li><a href="#roadmap">Roadmap</a></li> -->
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -143,7 +143,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Your Name - [@kshitijshah95](https://twitter.com/kshitijshah95) - email
+Kshitij Shah - [@kshitijshah95](https://twitter.com/kshitijshah95) - kshitijshah95@gmail.com
 
 Project Link: [https://github.com/kshitijshah95/trello-clone](https://github.com/kshitijshah95/trello-clone)
 
